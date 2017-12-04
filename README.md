@@ -5,10 +5,8 @@ Recall that our pipeline starts from images uploaded by different devices, and t
 <br />
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/1.png" width="600">
 ## Infrastructure
-With docker images created, we need to automate the pipeline and get the right data to the right code (i.e. contianer) to be proceesed. The first problem to be sloved is where to run a ceratin docker image given a set of computer nodes. Ideally, the underlying resource is shared 
-A set of comput nodes, instances, cloud vm swhre we going to run docker images, processing data. Share the underline resources, ideally more fo them per node if possible. Ec2 or gce instances, or digtal ocean. In the data center, google have server ranlks, has a ceratin amount cpu andmemroy, curve as cpu as vm, specifc size. Higher amout of memory and cpu expensive. One operating system, cetain baim with that vm, splict that reduce band. If we having data input and ouptu spit across  29 more cpu and meoryt to process faster, in an optimize ay. Cluster nodes.29:30 spreading procssseing across nodes, 
-Docker images runs across nodes,Going ssh to enter each of this maiches and running docketr to get each of things run.  to get Annoying, scel those up. A thoudansd nodes, someones full time job. 
-Final Infrastructure going touse tof]day
+With docker images created, several problems remian unsloved. First, we need to automate the pipeline and get the right data to the right code (i.e. contianer) to be proceesed and gather the output properly. The second is where to run a ceratin docker image, given a set of computer nodes. Ideally, the underlying resource is shared so that a node can run mulitple contianres efficiently in terms of respurce optimization. Also, the entire process needs to be automated.
+
 K8s is the base for the pipieline. the k8s clsuter consistes of a seriese of nodes, and things runing across nodes with one mstaer prossea run onit. When you are on your laptop, you can ianteranct with the master node via API. By tellling k8s what you wnat to run, and k8s will talk to mirrors to decide where to run each of those images and run then .
 
 its kind of like magicalone of those nodes fils, automateilcaly self heal, it knows where everything is running so it will auto maticlalt shifts nodes. samrts  how things are schedule. We don’t wnot to depy each of thisngs mally across nodes, we want something do thsat for us. we can just tlk to one ppiece, k maseter and it can deploy evertyihg.
@@ -22,8 +20,8 @@ s coming how ans when is processed, is other data need to be processd. Super qui
 we don’t real care ahrere this are running, its k job. Pipeline worker one is the running instance tof this container. 2..
 the mistobjeective way to do hta t is to spine up a buch aof clusters of varies sizews. And piepilient o it. Under a silullized world. And look at how each of this perfoemcs. Gaterht that ta back. infrataure optimization,
 underestimate , we have three nodes, all the sudden, we did increaser traffic, don’t have to stra up over, tell k to spine a new node or one or two, spperd things across those nodes. , autoscaling, more pressure on one node, set up autosaling, bring in aother node. How google runs things.
-Gke clik a  button, you have  a cluster. google cluster, not supre involved, autosace, may be more effort. 
-In summary, the process is you get your k cluster, and you tell k that 
+ 
+In summary, the process is you get your k8s cluster, and you tell k that 
 want run pd , running o n k, start talking to k and starts tliaking to pd, piepielien I want to set up, and under that hood, pd willtkank to k do all the things. 
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/2.png" width="600">
 ## Hands on! Deploying the pipeline
