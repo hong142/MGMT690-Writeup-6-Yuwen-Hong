@@ -38,16 +38,17 @@ We don’t have to talk to k8s directly, instead we can talk to Pachyderm and de
 $ pachctl version
 ```
 ### Create Repository
-Through "pachctl", you can start to create repositories for external input data (i.e. data that are direct input instead of output of any other stages). According to our design, we will need "images", "model" and "rules". Take "images" as a example. With the following cerate command, we essentially tell the Pachyderm to carve out a space in our object storage and call it "images", so that we can store input images there. This process doesn't physically split the storage space, but rather, Pachyderm will create a representation of the repository in the storage. We ran the same command for "model" and "rules", and then we get three repos with nothing in them.  
+Through "pachctl", you can start to create repositories for external input data (i.e. data that are direct input instead of output of any other stages). According to our design, we will need "images", "model" and "rules". Take "images" as a example. With the following cerate command, we essentially tell the Pachyderm to carve out a space in our object storage and call it "images", so that we can store input images there. This process doesn't physically split the storage space, but rather, Pachyderm will create a representation of the repository in the storage. We ran the same command for "model" and "rules", and then we put our model and rules in the respective repos using the "put-file" command.
 ```
 $ pachctl create-repo images
+$ pachctl put-file <repo> master -c -f <file>
 ```
-Created Repo
+Created Repos
 <br />
-<img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/3.png" width="600">
+<img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/4.png" width="600">
 <br />
-### pipeline
-Copy one by one. Pul donw rhte model provide as input to object detection, second coamnd, don’t rune acpmle urle one, first four. Pul down the model, gooint into that model directory. Pctl, put file. I have ythis file, you put this file in the model. File is a tensorflow model. Pctl list pasce repo, one of this has data in it. We put data int the model clyielrnar. … open that, put your email, save control o, pico space rule . Jason. Conrol-o , output this changes, enter, contlr-x
+### Create Pipeline
+ Pctl list pasce repo, one of this has data in it. We put data int the model clyielrnar. … open that, put your email, save control o, pico space rule . Jason. Conrol-o , output this changes, enter, contlr-x
 File cat space rule. 
 
 Take next put command, utles master commad, rule into repo. Rpo should ssee spme data inrules repo. Ce .. / .. /ls json fiels in ther. Laptop, put some data in pd, tell pd I want ot processthis piece of d ata ith this ocntainre, ….etc. how we build up our piepieline. Cat valid.json, you should see something like this,just those thres pisce, specifection what to spine up. Here I’m telling packedrm I want you to caret a vialdate stage, as the conainter iawnt you to run this ocnatier, in that conatienr, iwant you to runthis comnad. Pyhotn command. Process this data, input is this repo called images. Craeate this piepieline use this doekcet image runignthis coamnd. How I careta this comnd, here I just telling what data to procees, if younotiec here, wenhn this onater comes up, pd intects data that coantiern needs to process/pfs. 
