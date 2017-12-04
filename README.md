@@ -53,5 +53,4 @@ Next is to create a pipeline for each stage by passing a JSON file. The JSON fil
 $ pachctl create-pipeline -f <pipelineName.json>
 ```
 ### Testing
-If you put
-All the pipielien put togwheter, al the pods running, we can list pipieline se ethere is tuning piepie, li pore, we gor al thsose repo. We didn’t maunly create this repo, pd dose automaitally for us. Actuaolicaly carete output for us. Cd test_images ls aboucnh of iamges there. Now pactl put /file into iamges on the mster -c-f, copy the first image. Assuming everything wnet croectly, pc-job, automaitaly see runig. If any thing in imagemm iwna tyou to process this way. And we put something in there, I need to get to this ocntiendr to run it.  Goes all the way way down . pot pipieline, shoud get an email. 
+At this point, the final pipeline is put together, and you can use "put-file" to commit test images. Assume everything goes correctly, those images will automatically be processed to generate notifications and plots.
