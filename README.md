@@ -13,10 +13,6 @@ Matplot how many file in each of derictoy, just count, link the ifle in derictor
 Diferent base impat already have mtplot installed, add pyhotn, make iamge samller
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/1.png" width="350">
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/2.png" width="350">
-
-## Docker-ized pieces
-
-
 ## Infrastructure
 run docker build and push for each to docker hub. Each working on difernt piece, up load to registry, any one deploy pipeline, they pull down those sages. Each piece has a corresponidn g image. Each of piece runs whatecver functionality we discussed.
 Final Infrastructure going touse tof]day
