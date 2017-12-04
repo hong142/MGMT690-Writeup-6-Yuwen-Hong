@@ -30,10 +30,9 @@ want run pd , running o n k, start talking to k and starts tliaking to pd, piepi
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/2.png" width="600">
 ## Hands on! Deploying the pipeline
 ### 
-kubernetes (k8s) 
-kubectl is a command line interface for running commands against Kubernetes clusters
-We run k8s cluster as a base of our pipeline, so before deploying anything, you can use get all to check what is running on the k8s cluster at the moment. In our case, Pachyderm is running.
-kuctl command line tool leet us talk interacrtion between us and the mser node, we can do that via q ctl, ctl get pods, show us what coantiers are cruntly runign on our k clauser.  I already spine up the clusters and I told ku I want pd running. This guy. Couple of more things, there is htu is impoertant not talnle, dahsborad ruing. We have this pieces and pd ourning onptop of that pd is alrady connected to object storage. 
+We run k8s cluster as a base of our pipeline, and kubectl is a command line interface for us to interact with the master node. Before deploying anything, you can use get all to check what is running on the k8s cluster at the moment. In our case, Pachyderm is running.
+
+ctl get pods, show us what coantiers are cruntly runign on our k clauser.  I already spine up the clusters and I told ku I want pd running. This guy. Couple of more things, there is htu is impoertant not talnle, dahsborad ruing. We have this pieces and pd ourning onptop of that pd is alrady connected to object storage. 
 ```
 $ kubectl get all
 ```
