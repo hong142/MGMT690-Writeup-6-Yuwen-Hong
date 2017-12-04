@@ -5,7 +5,7 @@ Recall that our pipeline starts from images uploaded by different devices, and t
 <br />
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/1.png" width="600">
 ## Infrastructure
-With docker images created get the right data to the right code to be procees, automate, don’t to maunly on local machine. 
+With docker images created, we need to automate the pipeline and get the right data to the right code (i.e. contianer) to be proceesed. The first problem to be sloved is where to run a ceratin docker image given a set of computer nodes. Ideally, the underlying resource is shared 
 A set of comput nodes, instances, cloud vm swhre we going to run docker images, processing data. Share the underline resources, ideally more fo them per node if possible. Ec2 or gce instances, or digtal ocean. In the data center, google have server ranlks, has a ceratin amount cpu andmemroy, curve as cpu as vm, specifc size. Higher amout of memory and cpu expensive. One operating system, cetain baim with that vm, splict that reduce band. If we having data input and ouptu spit across  29 more cpu and meoryt to process faster, in an optimize ay. Cluster nodes.29:30 spreading procssseing across nodes, 
 Docker images runs across nodes,Going ssh to enter each of this maiches and running docketr to get each of things run.  to get Annoying, scel those up. A thoudansd nodes, someones full time job. 
 Final Infrastructure going touse tof]day
@@ -27,8 +27,8 @@ In summary, the process is you get your k cluster, and you tell k that
 want run pd , running o n k, start talking to k and starts tliaking to pd, piepielien I want to set up, and under that hood, pd willtkank to k do all the things. 
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/2.png" width="600">
 ## Hands on! Deploying the pipeline
-### 
-We run k8s cluster as a base of our pipeline, and kubectl is a command line interface for us to interact with the master node. Before deploying anything, you can use "get all" to check what is running on the k8s cluster at the moment. If you do "get pods", you can get coantiers that are runign on our k clauser. In our case, pachd, etcd as well as dash are running, and packyderm is alrady connected to object storage. 
+### Check Kubernetes
+We run k8s cluster as a base of our pipeline, and kubectl is a command line interface for us to interact with the master node. Before deploying anything, you can use "get all" to check what is running on the k8s cluster. Instead, if you do "get pods", you can get containers that are running. In our case, pachd, etcd as well as dash are running, and Pachyderm is already connected to the object storage.
 ```
 $ kubectl get all
 ```
