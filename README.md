@@ -1,20 +1,20 @@
 # The full pipeline
 In last week's writeup, we introduced how to containerize each stage of our pipeline and why it's important. At the end, we also mentioned the necessity to incorporate Kubernetes(k8s) and Pachyderm into the pipeline. This writeup reviews the structure of our full pipeline, introduces the infrastructure after involving k8s and Pachyderm, and provides a hands-on example for deploying the pipeline.
 ## Structure - Docker-ized pieces
-Recall that our pipeline starts from images uploaded by different devices, and the first stage is to validate images and separate valid and invalid ones into different repositories. Then we use the valid images and a trained detection model as inputs to process the object detection stage, and output JSON files under folders of each devices recording objects detected. Next is the threat detection stage, which uses both the JSON files and detection rules as inputs. Currently, we set the rules to be the same among users, but it's realizable to maintain different rules for different users. This stage only outputs when a threat is detected, and we expect to get a JSON file with threats recorded and a notification to the email service SendGrid's API. The output JSON files are still stored under folders for each device to simply tracking and plots generating. All the monitoring plots are stored for future reference.
+Recall that our pipeline starts from images uploaded by different devices, and the first stage is to validate images and separate valid and invalid ones into different repositories. Then we use the valid images and a trained detection model as inputs to process the object detection stage, and output JSON files under folders of each devices recording objects detected. Here a probability threshold is needed to ensure only detected object with a probability higher than the threshold is recorded on the JSON file. The reason we choose to output a JSON file rather than another image with boxes on objects is to simplify the automating process. You may also output images with box, which should be a good addition. Next is the threat detection stage, which uses both the JSON files and detection rules as inputs. Currently, we set the rules to be the same among users, but it's realizable to maintain different rules for different users. This stage only outputs when a threat is detected, and we expect to get a JSON file with threats recorded and a notification to the email service SendGrid's API. The output JSON files are still stored under folders for each device to facilitate tracking and plots generating. All the monitoring plots are stored for future reference. 
 <br />
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/1.png" width="500">
 
- keep trak of howmany tehts detected for each deivec. 
 Docker image we crate last week fro validate stage, repo in gtihub. Infer to detect the square, put in some command line argument. Where input model is, where images input is, output directory. Threshold.
-Changed bottom, script, detect ,make another image with box, not useful fro autpmate process, rather output a json file with classes scores detected. 100 things, with very little probability, set a therahold record detected wit hthis or graeter probability. Whatever you wna to set up. Extra, might also have image with box, embed the iamge in the image, good addition. 
+Changed bottom, 
+
+
 Base image, python script, just one dependcy. Available on docker hub.mgmt-object-detect.
-Python script threat, where jaon, output ,rule. Sendgrid API key. Load some rules, any of the classes in the list, move the file and send the email. Rule calss 1 person, vehincle, any secury company or users, from to email. Exract therat and compare, copy over to json and alert.a rule file per user, a single rule file with ID in it. Not toharad to implement, we alreay organizing json by device id, match certain id to rule file. Keep them same around. Line 20 to 25, match interaction. Pyothon packegae for sedngrid. 
+Python script threat, where jaon, output ,rule. Sendgrid API key. Load some rules, any of the classes in the list, move the file and send the email. Rule calss 1 person, vehincle, any secury company or users, from to email. Pyothon packegae for sedngrid. 
 Esting python image, adding send grisd packe and script to be run.
 Same command.
-Matplot how many file in each of derictoy, just count, link the ifle in derictoris, create plot, looping over file, count. Evrytime cahngne input wil be updae acoordingly.
-Diferent base impat already have mtplot installed, add pyhotn, make iamge samller
 
+Diferent base impat already have mtplot installed, add pyhotn, make iamge samller
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/2.png" width="350">
 ## Infrastructure
 run docker build and push for each to docker hub. Each working on difernt piece, up load to registry, any one deploy pipeline, they pull down those sages. Each piece has a corresponidn g image. Each of piece runs whatecver functionality we discussed.
