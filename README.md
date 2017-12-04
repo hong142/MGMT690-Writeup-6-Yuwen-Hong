@@ -32,8 +32,11 @@ We run k8s cluster as a base of our pipeline, and kubectl is a command line inte
 ```
 $ kubectl get all
 ```
-### pd
+### Check Pachyderm
 We don’t have to talk to k8s directly, instead we can talk to Pachyderm and deploy the things we want directly. Just like the way we talk to k8s, one way you can talik to Pachyderm is through its command line interface called "pachctl". To get the version of both Pachyderm and its command line interface, you can run "version" through the interface.
+```
+$ pachctl version
+```
 ### create repository
 Github, repository, take this, copy link, go back to your termial, get space lcone, paste that link, ls should see a directory. Juts pull down some of things we need to deploy things. Net run cd space direct, change apsnce to that directoyr.  You should see a buch of staff. Ls seewhats in there. Josn files, deal tiwh in just a sexond, first, 
 There are three data reporstiroyties that are only input. Not the out put of other stages. Create repo, collections of version data. Don’t need to have k and pd installed, you will Hvaea the ku control and p contle, which are just like client tolls  aloow you to tlak to k and pd. Pd, little toll let us tlak to it. A clinet , just client server. We have three images mode and rules, just input of data. Caret those withpkctl caret repo, first is images, which just happened is forn p control I taold p I want you to ceuve out a piece of this obect store  call it images and where Iwill  store some input data.pctl list repo see there is one repo, imagmes nothing in it. Simiar thing for model and rule, after you do all of that, you should se thre repos with nothing in them. Pd just careting curve ou t allitle space, reapreoas areprsnetation of thie repos not actually spliiit the pace. Copy one by one. Pul donw rhte model provide as input to object detection, second coamnd, don’t rune acpmle urle one, first four. Pul down the model, gooint into that model directory. Pctl, put file. I have ythis file, you put this file in the model. File is a tensorflow model. Pctl list pasce repo, one of this has data in it. We put data int the model clyielrnar. … open that, put your email, save control o, pico space rule . Jason. Conrol-o , output this changes, enter, contlr-x
