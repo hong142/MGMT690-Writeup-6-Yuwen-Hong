@@ -28,7 +28,7 @@ want run pd , running o n k, start talking to k and starts tliaking to pd, piepi
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/2.png" width="600">
 ## Hands on! Deploying the pipeline
 ### Check Kubernetes
-We run k8s cluster as a base of our pipeline, and kubectl is a command line interface for us to interact with the master node. Before deploying anything, you can use "get all" to check what is running on the k8s cluster. Instead, if you do "get pods", you can get containers that are running. In our case, pachd, etcd as well as dash are running, and Pachyderm is already connected to the object storage.
+We run k8s cluster as a base of our pipeline, and kubectl is a command line interface for us to interact with the master node wihtout installing k8s. Before deploying anything, you can use "get all" to check what is running on the k8s cluster. Instead, if you do "get pods", you can get containers that are running. In our case, pachd, etcd as well as dash are running, and Pachyderm is already connected to the object storage.
 ```
 $ kubectl get all
 ```
@@ -37,14 +37,19 @@ We don’t have to talk to k8s directly, instead we can talk to Pachyderm and de
 ```
 $ pachctl version
 ```
-### create repository
-Github, repository, take this, copy link, go back to your termial, get space lcone, paste that link, ls should see a directory. Juts pull down some of things we need to deploy things. Net run cd space direct, change apsnce to that directoyr.  You should see a buch of staff. Ls seewhats in there. Josn files, deal tiwh in just a sexond, first, 
-There are three data reporstiroyties that are only input. Not the out put of other stages. Create repo, collections of version data. Don’t need to have k and pd installed, you will Hvaea the ku control and p contle, which are just like client tolls  aloow you to tlak to k and pd. Pd, little toll let us tlak to it. A clinet , just client server. We have three images mode and rules, just input of data. Caret those withpkctl caret repo, first is images, which just happened is forn p control I taold p I want you to ceuve out a piece of this obect store  call it images and where Iwill  store some input data.pctl list repo see there is one repo, imagmes nothing in it. Simiar thing for model and rule, after you do all of that, you should se thre repos with nothing in them. Pd just careting curve ou t allitle space, reapreoas areprsnetation of thie repos not actually spliiit the pace. Copy one by one. Pul donw rhte model provide as input to object detection, second coamnd, don’t rune acpmle urle one, first four. Pul down the model, gooint into that model directory. Pctl, put file. I have ythis file, you put this file in the model. File is a tensorflow model. Pctl list pasce repo, one of this has data in it. We put data int the model clyielrnar. … open that, put your email, save control o, pico space rule . Jason. Conrol-o , output this changes, enter, contlr-x
-File cat space rule. 
+### Create Repository
+Through "pachctl", you can start to create repositories for external input data (i.e. data that are direct input instead of output of any other stages). According to our design, we will need "images", "model" and "rules". Take "images" as a example. With the following cerate command, we essentially tell the Pachyderm to carve out a space in our object storage and call it "images", so that we can store input images there. This process doesn't physically split the storage space, but rather, Pachyderm will create a representation of the repository in the storage. We ran the same command for "model" and "rules", and then we get three repos with nothing in them.  
 ```
-$ pachctl create-repo reponame
+$ pachctl create-repo images
 ```
+Created Repo
+<br />
+<img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/3.png" width="600">
+<br />
 ### pipeline
+Copy one by one. Pul donw rhte model provide as input to object detection, second coamnd, don’t rune acpmle urle one, first four. Pul down the model, gooint into that model directory. Pctl, put file. I have ythis file, you put this file in the model. File is a tensorflow model. Pctl list pasce repo, one of this has data in it. We put data int the model clyielrnar. … open that, put your email, save control o, pico space rule . Jason. Conrol-o , output this changes, enter, contlr-x
+File cat space rule. 
+
 Take next put command, utles master commad, rule into repo. Rpo should ssee spme data inrules repo. Ce .. / .. /ls json fiels in ther. Laptop, put some data in pd, tell pd I want ot processthis piece of d ata ith this ocntainre, ….etc. how we build up our piepieline. Cat valid.json, you should see something like this,just those thres pisce, specifection what to spine up. Here I’m telling packedrm I want you to caret a vialdate stage, as the conainter iawnt you to run this ocnatier, in that conatienr, iwant you to runthis comnad. Pyhotn command. Process this data, input is this repo called images. Craeate this piepieline use this doekcet image runignthis coamnd. How I careta this comnd, here I just telling what data to procees, if younotiec here, wenhn this onater comes up, pd intects data that coantiern needs to process/pfs. 
 Next is to create a pipeline for each stage by passing a json file
 Pd ctl create – pipielene -f, I will give you a file tiells you how to care this piepieline. And that file is …json. If you run that, then qctl get pods, I told pd to run this as an pipielien stage, pd got this contaers have k spine up on nodes andhas that worker ready fro processing. This is piepile workers just runign the ocntieanre we specifiy ealryere. Same exact thing object detct, threr dect plot. Sendgrid api reach out tosendgit and sent the eamiel. Pico, space, run thretst detc. sojsn I’m specify an enveroinmental for this things ot have acess to , hwo we create our api key here, copy api key, grab that key go back paste that between thoese coposes. Save thos eaagin.then you therect detct. Json should have the api key in it. Creraye/update that piepieline., ptcl apsce csre pirpele . f Jason. All the pipielien put togwheter, al the pods running, we can list pipieline se ethere is tuning piepie, li pore, we gor al thsose repo. We didn’t maunly create this repo, pd dose automaitally for us. Actuaolicaly carete output for us. Cd test_images ls aboucnh of iamges there. Now pactl put /file into iamges on the mster -c-f, copy the first image. Assuming everything wnet croectly, pc-job, automaitaly see runig. If any thing in imagemm iwna tyou to process this way. And we put something in there, I need to get to this ocntiendr to run it.  Goes all the way way down . pot pipieline, shoud get an email. 
