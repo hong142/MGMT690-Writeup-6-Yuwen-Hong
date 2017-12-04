@@ -42,7 +42,6 @@ Through "pachctl", you can start to create repositories for external input data 
 ```
 $ pachctl create-repo images
 $ pachctl put-file <repo> master -c -f <file>
-$ pachctl cat <file>
 ```
 Created Repos
 <br />
