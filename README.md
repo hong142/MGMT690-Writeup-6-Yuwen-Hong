@@ -26,7 +26,7 @@ We run k8s cluster as a base of our pipeline, and kubectl is a command line inte
 $ kubectl get all
 ```
 ### Check Pachyderm
-We don’t have to talk to k8s directly, instead we can talk to Pachyderm and deploy the things we want directly. Just like the way we talk to k8s, one way you can talik to Pachyderm is through its command line interface called "pachctl". To get the version of both Pachyderm and its command line interface, you can run "version" through the interface.
+We don’t have to talk to k8s directly, instead we can talk to Pachyderm and deploy the things we want directly. Just like the way we talk to k8s, one way you can talk to Pachyderm is through its command line interface called "pachctl". To get the version of both Pachyderm and its command line interface, you can run "version" through the interface.
 ```
 $ pachctl version
 ```
