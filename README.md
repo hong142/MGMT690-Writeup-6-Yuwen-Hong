@@ -5,13 +5,15 @@ Recall that our pipeline starts from images uploaded by different devices, and t
 <br />
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/1.png" width="600">
 ## Infrastructure
-With docker images created, several problems remian unsloved. First, we need to automate the pipeline and get the right data to the right code (i.e. contianer) to be proceesed and gather the output properly. The second is where to run a ceratin docker image, given a set of computer nodes. Ideally, the underlying resource is shared so that a node can run mulitple contianres efficiently in terms of respurce optimization. Also, the entire process needs to be automated.
+With docker images created, several problems remian unsloved. First, we need to automate the pipeline and get the right data to the right code (i.e. contianer) to be proceesed and gather the output properly. The second is where to run a ceratin docker image, given a set of computer nodes and scale deploymnet. Ideally, the underlying resource is shared so that a node can run mulitple contianres efficiently in terms of respurce optimization. 
 
-K8s is the base for the pipieline. the k8s clsuter consistes of a seriese of nodes, and things runing across nodes with one mstaer prossea run onit. When you are on your laptop, you can ianteranct with the master node via API. By tellling k8s what you wnat to run, and k8s will talk to mirrors to decide where to run each of those images and run then .
+Kubernets(k8s), a platform working with containers, will be used as the base for the pipieline to take care of scale deployment and resoruce optimazaiton. It will dynamically provides the most efficient way for nodes allocation. In addition, k8s is capable of monitoring and auto-recovering on operation of application. It knows where everything is running, so it will autoMATICALLY shifts nodes if one is down. Kubernets also enables data scheduling.
 
-its kind of like magicalone of those nodes fils, automateilcaly self heal, it knows where everything is running so it will auto maticlalt shifts nodes. samrts  how things are schedule. We don’t wnot to depy each of thisngs mally across nodes, we want something do thsat for us. we can just tlk to one ppiece, k maseter and it can deploy evertyihg.
-Right data to the right code, process in sequence as we designed. Pakcyderm, another docker iamge containear running on kbnet pockd,demen, we tell kunet iwant you to run one of this, run that here, instead of talking to kn derictly, we talik to this service, not only that I want to run this things which able  to process this data…… pd35:20.
-Pd will gout and pull this things down deploy them on kalso feed in the data we wnt rto process and send it to the right on eof this piece to be proceed. K cluster, what thatdooes, we had object storage where we will store data pd another contieanrruning on k pod, a sest of contieanrs running on a node. For our purspe ita a ocnatiern.
+The k8s clsuter consistes of a seriese of nodes, and things runing across nodes with one mstaer prossea run onit. When you are on your laptop, you can ianteranct with the master node via API. By tellling k8s what you wnat to run, and k8s will talk to mirrors to decide where to run each of those images and run theM. We NO longer have to depy each of thisngs mally across nodes.
+
+Pakcyderm (pockd), which can be condisered as another docker iamge containear running on kbnet will ensure the Right data is processed in the right sequence as we designed. Insteade of taliking to k8s directly, we informs Pakcyderm what process we want to run, and Pakcyderm will pull down all the things needed and deploy them on k8s.
+
+feed in the data we wnt rto process and send it to the right on eof this piece to be proceed. K cluster, what thatdooes, we had object storage where we will store data pd another contieanrruning on k pod, a sest of contieanrs running on a node. For our purspe ita a ocnatiern.
 On top of k ,we have pd running, interacit with that, pd will spine up piepielie workers on top of those nodes, which are just our contanirers the ones we defined it gona pull in and out data we obkject dstore and gieve it to those conatiers when they nedds to process the data, 
 In summry, we mange ato find a way to dploy all fo our set fo processing stages. In a unified way wioytpur .. into a bunjh of mahcines.we managead how to get right data to one of theose procesisgn stages. In the sequence we want. Insteraftuce .
 
@@ -21,8 +23,7 @@ we don’t real care ahrere this are running, its k job. Pipeline worker one is 
 the mistobjeective way to do hta t is to spine up a buch aof clusters of varies sizews. And piepilient o it. Under a silullized world. And look at how each of this perfoemcs. Gaterht that ta back. infrataure optimization,
 underestimate , we have three nodes, all the sudden, we did increaser traffic, don’t have to stra up over, tell k to spine a new node or one or two, spperd things across those nodes. , autoscaling, more pressure on one node, set up autosaling, bring in aother node. How google runs things.
  
-In summary, the process is you get your k8s cluster, and you tell k that 
-want run pd , running o n k, start talking to k and starts tliaking to pd, piepielien I want to set up, and under that hood, pd willtkank to k do all the things. 
+In summary, the entire process is you get your k8s cluster, and you tell k8s master that you want to run Pakcyderm on it. Then you give all your commands to Pakcyderm, which will pass those commands to k8s.
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/2.png" width="600">
 ## Hands on! Deploying the pipeline
 ### Check Kubernetes
