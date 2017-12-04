@@ -4,18 +4,6 @@ In last week's writeup, we introduced how to containerize each stage of our pipe
 Recall that our pipeline starts from images uploaded by different devices, and the first stage is to validate images and separate valid and invalid ones into different repositories. Then we use the valid images and a trained detection model as inputs to process the object detection stage, and output JSON files under folders of each devices recording objects detected. Here a probability threshold is needed to ensure only detected object with a probability higher than the threshold is recorded on the JSON file. The reason we choose to output a JSON file rather than another image with boxes on objects is to simplify the automating process. You may also output images with box, which should be a good addition. Next is the threat detection stage, which uses both the JSON files and detection rules as inputs. Currently, we set the rules to be the same among users, but it's realizable to maintain different rules for different users. This stage only outputs when a threat is detected, and we expect to get a JSON file with threats recorded and a notification to the email service SendGrid's API. The output JSON files are still stored under folders for each device to facilitate tracking and plots generating. All the monitoring plots are stored for future reference. 
 <br />
 <img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/1.png" width="500">
-
-Docker image we crate last week fro validate stage, repo in gtihub. Infer to detect the square, put in some command line argument. Where input model is, where images input is, output directory. Threshold.
-Changed bottom, 
-
-
-Base image, python script, just one dependcy. Available on docker hub.mgmt-object-detect.
-Python script threat, where jaon, output ,rule. Sendgrid API key. Load some rules, any of the classes in the list, move the file and send the email. Rule calss 1 person, vehincle, any secury company or users, from to email. Pyothon packegae for sedngrid. 
-Esting python image, adding send grisd packe and script to be run.
-Same command.
-
-Diferent base impat already have mtplot installed, add pyhotn, make iamge samller
-<img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/2.png" width="350">
 ## Infrastructure
 run docker build and push for each to docker hub. Each working on difernt piece, up load to registry, any one deploy pipeline, they pull down those sages. Each piece has a corresponidn g image. Each of piece runs whatecver functionality we discussed.
 Final Infrastructure going touse tof]day
@@ -38,7 +26,7 @@ underestimate , we have three nodes, all the sudden, we did increaser traffic, d
 Gke clik a  button, you have  a cluster. google cluster, not supre involved, autosace, may be more effort. 
 In summary, the process is you get your k cluster, and you tell k that 
 want run pd , running o n k, start talking to k and starts tliaking to pd, piepielien I want to set up, and under that hood, pd willtkank to k do all the things. 
-
+<img src="https://github.com/hong142/MGMT690-Writeup-6-Yuwen-Hong/blob/master/2.png" width="500">
 ## Hands on! Deploying the pipeline
 ### 
 kubernetes (k8s) 
